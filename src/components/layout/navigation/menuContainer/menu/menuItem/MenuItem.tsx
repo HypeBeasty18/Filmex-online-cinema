@@ -1,4 +1,5 @@
 'use client'
+
 import { clsx } from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -12,8 +13,6 @@ import s from './MenuItem.module.scss'
 
 const MenuItem: FC<{ item: IMenuItem }> = ({ item }) => {
 	const pathName = usePathname()
-
-	console.log(pathName)
 
 	return (
 		<li className={clsx(s.li, { [s.active]: pathName === item.link })}>

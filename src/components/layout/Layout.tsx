@@ -5,7 +5,7 @@ import Navigation from './navigation/Navigation'
 import SideBar from './sideBar/SideBar'
 
 interface Props {
-  children: React.ReactNode
+	children: React.ReactNode
 }
 
 const Layout: FC<Props> = ({ children }) => {
