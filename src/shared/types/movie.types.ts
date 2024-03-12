@@ -32,6 +32,6 @@ export interface IMovie {
 	actors: IActor[]
 	countOpened: number
 	videoUrl: string
-	rating: string
+	rating: number
 	slug: string
 }
