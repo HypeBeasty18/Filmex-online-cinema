@@ -1,3 +1,4 @@
+import ReactToastify from '@/providers/ReactToastify'
 import React, { FC } from 'react'
 
 import s from './Layout.module.scss'
@@ -12,7 +13,10 @@ const Layout: FC<Props> = ({ children }) => {
 	return (
 		<div className={s.layout}>
 			<Navigation />
-			<div className={s.center}>{children}</div>
+			<div className={s.center}>
+				<ReactToastify />
+				{children}
+			</div>
 			<SideBar />
 		</div>
 	)
