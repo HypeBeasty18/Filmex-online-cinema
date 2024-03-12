@@ -21,7 +21,7 @@
 		}
 
 		.genres {
-			@apply text-gray-600 text-sm flex;
+			@apply text-gray-600 text-sm flex gap-1;
 		}
 		.rating {
 			@apply flex items-center mb-2;
