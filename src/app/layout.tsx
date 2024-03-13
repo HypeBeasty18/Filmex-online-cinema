@@ -1,4 +1,5 @@
 import MainProvider from '@/app/MainProvider'
+import ReactToastify from '@/providers/ReactToastify'
 import type { Metadata } from 'next'
 
 import { siteName, titleMerge } from '@/config/seo.config'
@@ -30,7 +31,10 @@ export default function RootLayout({
 	return (
 		<MainProvider>
 			<html lang='en'>
-				<body>{children}</body>
+				<body>
+					<ReactToastify />
+					{children}
+				</body>
 			</html>
 		</MainProvider>
 	)
