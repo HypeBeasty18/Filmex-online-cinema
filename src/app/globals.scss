@@ -26,5 +26,14 @@ input[type='file'] ::-webkit-file-upload-button {
 }
 
 input:focus {
-	box-shadow: none !important ;
+	box-shadow: transparent !important ;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #101215 inset !important;
+}
+input:-webkit-autofill{
+	-webkit-text-fill-color: #66676E !important;
 }

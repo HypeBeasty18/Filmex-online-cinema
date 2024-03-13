@@ -14,7 +14,6 @@ const Layout: FC<Props> = ({ children }) => {
 		<div className={s.layout}>
 			<Navigation />
 			<div className={s.center}>
-				<ReactToastify />
 				{children}
 			</div>
 			<SideBar />
