@@ -1,12 +1,11 @@
+import AuthProvider from '@/providers/authProvider/AuthProvider'
 import { Metadata } from 'next'
-import { FC, Suspense } from 'react'
-
-import Auth from '@/components/screens/auth/Auth'
+import { FC } from 'react'
 
 import { titleMerge } from '@/config/seo.config'
 
 export const metadata: Metadata = {
-	title: titleMerge('Auth'),
+	title: titleMerge('Profile'),
 	robots: {
 		index: false,
 		follow: false,
@@ -16,9 +15,9 @@ export const metadata: Metadata = {
 
 const page: FC = () => {
 	return (
-		<Suspense fallback={<div>Loading...</div>}>
-			<Auth />{' '}
-		</Suspense>
+		<AuthProvider Component={{ isOnlyUser: true }}>
+			<div className='text-white'>Admin panel</div>
+		</AuthProvider>
 	)
 }
 
