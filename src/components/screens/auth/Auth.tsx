@@ -33,7 +33,8 @@ const Auth: FC = () => {
 			login(data)
 		} else if (type === 'register') {
 			reg(data)
-		} 
+		}
+		reset()
 	}
 
 	return (

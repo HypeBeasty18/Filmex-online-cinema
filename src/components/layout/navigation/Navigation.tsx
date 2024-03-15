@@ -1,8 +1,9 @@
+
 import { FC } from 'react'
 
 import Logo from './Logo'
-import MenuContainer from './menuContainer/MenuContainer'
 import s from './Navigation.module.scss'
+import MenuContainer from './menuContainer/MenuContainer'
 
 const Navigation: FC = () => {
 	return (

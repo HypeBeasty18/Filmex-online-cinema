@@ -26,16 +26,26 @@ const AuthFileds: FC<IAuthFields> = ({
 						message: 'Please enter a valid email address'
 					}
 				})}
-				placeholder='E-mail' error={errors.email}
+				placeholder='E-mail'
+				error={errors.email?.message?.toString()}
 			/>
 			<Field
-				{...register('password', isPasswordRequierd ? {
-					required: 'Password is required',
-          minLength: { value: 6, message: 'Password must be at least 6 characters'
-				} } : {})} 
-        type='password'
-				placeholder='Password' error={errors.password}
-        autoComplete='off'
+				{...register(
+					'password',
+					isPasswordRequierd
+						? {
+								required: 'Password is required',
+								minLength: {
+									value: 6,
+									message: 'Password must be at least 6 characters'
+								}
+							}
+						: {}
+				)}
+				type='password'
+				placeholder='Password'
+				error={errors.password?.message?.toString()}
+				autoComplete='off'
 			/>
 		</>
 	)

@@ -1,4 +1,3 @@
-import ReactToastify from '@/providers/ReactToastify'
 import React, { FC } from 'react'
 
 import s from './Layout.module.scss'

@@ -33,7 +33,7 @@ export const AuthService = {
 		removeTokensStorage()
 		localStorage.removeItem('user')
 	},
-	async geetNewsTokens() {
+	async getNewsTokens() {
 		const refreshToken = Cookies.get('refreshToken')
 		const response = await axiosClassic.post<IAuthResponse>(
 			getAuthUrl('/login/access-token'),
