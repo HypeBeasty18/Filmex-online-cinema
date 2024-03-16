@@ -1,13 +1,13 @@
 import AuthProvider from '@/providers/authProvider/AuthProvider'
 import { Metadata } from 'next'
+import { FC } from 'react'
+
 
 import { titleMerge } from '@/config/seo.config'
-
-import { FC } from 'react'
-import Admin from '@/components/screens/admin/home/Admin'
+import MovieList from '@/components/screens/admin/movies/MovieList'
 
 export const metadata: Metadata = {
-	title: titleMerge('Admin panel'),
+	title: titleMerge('Movies'),
 	robots: {
 		index: false,
 		follow: false,
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const page: FC = () => {
 	return (
 		<AuthProvider Component={{ isOnlyAdmin: true }}>
-			<Admin/>
+			<MovieList/>
 		</AuthProvider>
 	)
 }
