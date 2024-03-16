@@ -11,16 +11,27 @@ import Heading from '@/components/ui/heading/Heading'
 import { useActors } from './useActors'
 
 const ActorList: FC = () => {
-	const { handleSearch, isLoading, searchTerm, data, mutateAsync } = useActors()
+	const {
+		handleSearch,
+		isLoading,
+		searchTerm,
+		data,
+		deleteActor,
+		createActor
+	} = useActors()
 
 	return (
 		<Layout>
 			<AdminNavigation />
-			<Heading title='Users' />
-			<AdminHeader handleSearch={handleSearch} searchTerm={searchTerm} />
+			<Heading title='Actors' />
+			<AdminHeader
+				handleSearch={handleSearch}
+				searchTerm={searchTerm}
+				onClick={createActor}
+			/>
 			<AdminTable
 				isLoading={isLoading}
-				removeHandler={mutateAsync}
+				removeHandler={deleteActor}
 				headerItems={['Name', 'Count movies']}
 				tableItems={data || []}
 			/>

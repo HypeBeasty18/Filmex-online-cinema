@@ -11,16 +11,27 @@ import Heading from '@/components/ui/heading/Heading'
 import { useGenres } from './useGenres'
 
 const GenreList: FC = () => {
-	const { handleSearch, isLoading, searchTerm, data, mutateAsync } = useGenres()
+	const {
+		handleSearch,
+		isLoading,
+		searchTerm,
+		data,
+		deleteGenre,
+		createGenre
+	} = useGenres()
 
 	return (
 		<Layout>
 			<AdminNavigation />
-			<Heading title='Users' />
-			<AdminHeader handleSearch={handleSearch} searchTerm={searchTerm} />
+			<Heading title='Genres' />
+			<AdminHeader
+				handleSearch={handleSearch}
+				searchTerm={searchTerm}
+				onClick={createGenre}
+			/>
 			<AdminTable
 				isLoading={isLoading}
-				removeHandler={mutateAsync}
+				removeHandler={deleteGenre}
 				headerItems={['Name', 'Slug']}
 				tableItems={data || []}
 			/>

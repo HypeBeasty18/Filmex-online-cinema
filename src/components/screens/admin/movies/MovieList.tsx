@@ -11,16 +11,16 @@ import Heading from '@/components/ui/heading/Heading'
 import { useMovies } from './useMovies'
 
 const MovieList: FC = () => {
-	const { handleSearch, isLoading, searchTerm, data, mutateAsync } = useMovies()
+	const { handleSearch, isLoading, searchTerm, data, deleteMovie, createMovie } = useMovies()
 
 	return (
 		<Layout>
 			<AdminNavigation />
-			<Heading title='Users' />
-			<AdminHeader handleSearch={handleSearch} searchTerm={searchTerm} />
+			<Heading title='Movies' />
+			<AdminHeader handleSearch={handleSearch} searchTerm={searchTerm} onClick={createMovie} />
 			<AdminTable
 				isLoading={isLoading}
-				removeHandler={mutateAsync}
+				removeHandler={deleteMovie}
 				headerItems={['Title', 'Genre', 'Rating']}
 				tableItems={data || []}
 			/>
