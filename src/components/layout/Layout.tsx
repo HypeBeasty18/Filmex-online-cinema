@@ -12,9 +12,7 @@ const Layout: FC<Props> = ({ children }) => {
 	return (
 		<div className={s.layout}>
 			<Navigation />
-			<div className={s.center}>
-				{children}
-			</div>
+			<div className={s.center}>{children}</div>
 			<SideBar />
 		</div>
 	)

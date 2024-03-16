@@ -1,3 +1,5 @@
+'use client'
+
 import { FC, SetStateAction } from 'react'
 
 import MaterialIcon from '../MaterialIcon'
@@ -7,7 +9,7 @@ import s from './SearchField.module.scss'
 interface ISearchField {
 	searchTerm: string
 	handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void
-	setIsShow: React.Dispatch<SetStateAction<boolean>>
+	setIsShow?: React.Dispatch<SetStateAction<boolean>>
 }
 
 const SearchField: FC<ISearchField> = ({
@@ -17,7 +19,7 @@ const SearchField: FC<ISearchField> = ({
 }) => {
 	const handleClick = (event: React.MouseEvent<HTMLInputElement>) => {
 		event.preventDefault()
-		setIsShow(true)
+		setIsShow ? setIsShow(true) : null
 	}
 
 	return (

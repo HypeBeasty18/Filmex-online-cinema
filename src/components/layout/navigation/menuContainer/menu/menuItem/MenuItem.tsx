@@ -13,9 +13,13 @@ import s from './MenuItem.module.scss'
 
 const MenuItem: FC<{ item: IMenuItem }> = ({ item }) => {
 	const pathName = usePathname()
-	
+
 	return (
-		<li className={clsx(s.li, { [s.active]: pathName === item.link })}>
+		<li
+			className={clsx(s.li, {
+				[s.active]: pathName === item.link
+			})}
+		>
 			<Link href={item.link}>
 				<div>
 					<MaterialIcon name={item.icon} />
