@@ -26,3 +26,16 @@
 .error {
 	@apply absolute -bottom-6 left-0 text-sm w-full text-primary;
 }
+
+.editorWrapper {
+	@apply border-0;
+
+	.wrapper{
+		.editor {
+			@apply h-96 border rounded-b-lg border-gray-700 px-4 text-gray-500 overflow-hidden;
+		}
+	}
+}
+
+
+
