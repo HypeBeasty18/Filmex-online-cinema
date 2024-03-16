@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -15,6 +16,8 @@ export const useGenres = () => {
 
 	const debouncedSearch = useDebounce(searchTerm, 500)
 
+	const { push } = useRouter()
+
 	const queryData = useQuery({
 		queryKey: ['Genre list', debouncedSearch],
 		queryFn: () => GenreService.getAll(debouncedSearch),
@@ -22,7 +25,7 @@ export const useGenres = () => {
 			data.map(
 				(genre): ITableItem => ({
 					_id: genre._id,
-					editUrl: getAdminUrl(`genre/edit/${genre._id}`),
+					editUrl: getAdminUrl(`genres/edit/${genre._id}`),
 					items: [genre.name, genre.slug]
 				})
 			)
@@ -38,7 +41,7 @@ export const useGenres = () => {
 		setSearchTerm(e.target.value)
 	}
 
-	const { mutateAsync } = useMutation({
+	const { mutateAsync: deleteGenre } = useMutation({
 		mutationKey: ['Delete genre'],
 		mutationFn: (id: string) => GenreService.deleteGenre(id),
 		onError: () => toast.error('Error delete genre'),
@@ -48,13 +51,24 @@ export const useGenres = () => {
 		}
 	})
 
+	const { mutateAsync: createGenre } = useMutation({
+		mutationKey: ['Create genre'],
+		mutationFn: () => GenreService.createGenre(),
+		onError: () => toast.error('Error create genre'),
+		onSuccess: ({ data: _id }) => {
+			toast.success('Genre created')
+			push(getAdminUrl(`genres/edit/${_id}`))
+		}
+	})
+
 	return useMemo(
 		() => ({
 			handleSearch,
 			...queryData,
 			searchTerm,
-			mutateAsync
+			deleteGenre,
+			createGenre
 		}),
-		[queryData, searchTerm, mutateAsync]
+		[queryData, searchTerm, deleteGenre, createGenre]
 	)
 }

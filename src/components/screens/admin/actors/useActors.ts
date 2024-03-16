@@ -9,7 +9,7 @@ import { getAdminUrl } from '@/config/url.config'
 import { useDebounce } from '@/hooks/useDebounce'
 
 import { ActorService } from '@/services/actor.service'
-
+import { useRouter } from 'next/navigation'
 
 export const useActors = () => {
 	const [searchTerm, setSearchTerm] = useState<string>('')
@@ -23,7 +23,7 @@ export const useActors = () => {
 			data.map(
 				(actor): ITableItem => ({
 					_id: actor._id,
-					editUrl: getAdminUrl(`actor/edit/${actor._id}`),
+					editUrl: getAdminUrl(`actors/edit/${actor._id}`),
 					items: [actor.name, String(actor.countMovies)]
 				})
 			)
@@ -39,7 +39,19 @@ export const useActors = () => {
 		setSearchTerm(e.target.value)
 	}
 
-	const { mutateAsync } = useMutation({
+	const { push } = useRouter()
+
+	const { mutateAsync: createActor } = useMutation({
+		mutationKey: ['Create actor'],
+		mutationFn: () => ActorService.createActor(),
+		onError: () => toast.error('Error create actor'),
+		onSuccess: ({ data: _id }) => {
+			toast.success('Actor created')
+			push(getAdminUrl(`actors/edit/${_id}`))
+		}
+	})
+
+	const { mutateAsync: deleteActor } = useMutation({
 		mutationKey: ['Delete actor'],
 		mutationFn: (id: string) => ActorService.deleteActor(id),
 		onError: () => toast.error('Error delete actor'),
@@ -54,8 +66,9 @@ export const useActors = () => {
 			handleSearch,
 			...queryData,
 			searchTerm,
-			mutateAsync
+			deleteActor,
+			createActor
 		}),
-		[queryData, searchTerm, mutateAsync]
+		[queryData, searchTerm, deleteActor, createActor]
 	)
 }

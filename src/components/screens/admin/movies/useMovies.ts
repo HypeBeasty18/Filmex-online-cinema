@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -24,7 +25,7 @@ export const useMovies = () => {
 			data.map(
 				(movie): ITableItem => ({
 					_id: movie._id,
-					editUrl: getAdminUrl(`movie/edit/${movie._id}`),
+					editUrl: getAdminUrl(`movies/edit/${movie._id}`),
 					items: [
 						movie.title,
 						getGenresLists(movie.genres),
@@ -44,7 +45,19 @@ export const useMovies = () => {
 		setSearchTerm(e.target.value)
 	}
 
-	const { mutateAsync } = useMutation({
+	const { push } = useRouter()
+
+	const { mutateAsync: createMovie } = useMutation({
+		mutationKey: ['Create movie'],
+		mutationFn: () => MovieService.createMovie(),
+		onError: () => toast.error('Error create movie'),
+		onSuccess: ({ data: _id }) => {
+			toast.success('Movie created')
+			push(getAdminUrl(`movies/edit/${_id}`))
+		}
+	})
+
+	const { mutateAsync: deleteMovie } = useMutation({
 		mutationKey: ['Delete movie'],
 		mutationFn: (id: string) => MovieService.deleteMovie(id),
 		onError: () => toast.error('Error delete movie'),
@@ -59,8 +72,9 @@ export const useMovies = () => {
 			handleSearch,
 			...queryData,
 			searchTerm,
-			mutateAsync
+			deleteMovie,
+			createMovie
 		}),
-		[queryData, searchTerm, mutateAsync]
+		[queryData, searchTerm, deleteMovie, createMovie]
 	)
 }
