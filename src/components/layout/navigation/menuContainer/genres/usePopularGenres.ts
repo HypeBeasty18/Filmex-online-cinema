@@ -9,12 +9,12 @@ import { GenreService } from '@/services/genre.service'
 import { IMenuItem } from '../menu.interface'
 
 export const usePopularGenres = () => {
-	
 	const queryData = useQuery({
 		queryKey: ['popular genre menu'],
 		queryFn: () => GenreService.getAll(),
 		select: ({ data }) =>
 			data
+				.filter(genre => genre.icon)
 				.map(
 					genre =>
 						({
