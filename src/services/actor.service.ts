@@ -8,7 +8,7 @@ import { getActorUrl } from '@/config/url.config'
 import { IActor } from '@/shared/types/movie.types'
 
 export const ActorService = {
-	async getAll(searchTerm: string) {
+	async getAll(searchTerm?: string) {
 		return instance.get<IActor[]>(getActorsUrl(''), {
 			params: searchTerm ? { searchTerm } : {}
 		})
