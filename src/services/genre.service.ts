@@ -1,6 +1,7 @@
-import { axiosClassic } from '@/api/interceptors'
+import { axiosClassic, instance } from '@/api/interceptors'
 
 import { getGenresUrl } from '@/config/api.config'
+import { getGenreUrl } from '@/config/url.config'
 
 import { IGenre } from '@/shared/types/movie.types'
 
@@ -13,5 +14,8 @@ export const GenreService = {
 					}
 				: {}
 		})
+	},
+	async deleteGenre(id: string) {
+		return instance.delete<string>(getGenreUrl(`/${id}`))
 	}
 }
