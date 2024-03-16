@@ -48,3 +48,7 @@ input:-webkit-autofill {
 ::-webkit-scrollbar-thumb {
 	background-color: #242529;
 }
+
+.admin-form {
+	@apply w-1/2 mt-12;
+}
