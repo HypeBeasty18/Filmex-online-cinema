@@ -1,5 +1,7 @@
 import { axiosClassic, instance } from '@/api/interceptors'
 
+import { IGenreEditInput } from '@/components/screens/admin/genres/genreEdit/genre-edit.interface'
+
 import { getGenresUrl } from '@/config/api.config'
 import { getGenreUrl } from '@/config/url.config'
 
@@ -16,6 +18,19 @@ export const GenreService = {
 		})
 	},
 	async deleteGenre(id: string) {
-		return instance.delete<string>(getGenreUrl(`/${id}`))
-	}
+		return instance.delete<string>(getGenresUrl(`/${id}`))
+	},
+
+	async updateGenre(id: string, data: IGenreEditInput) {
+		return instance.put<string>(getGenresUrl(`/${id}`), data)
+	},
+	async getById(_id: string) {
+		const response = await instance.get<IGenreEditInput>(
+			getGenresUrl(`/${_id}`)
+		)
+		return response.data
+	},
+	async createGenre() {
+		return instance.post<string>(getGenresUrl('/'))
+	},
 }
