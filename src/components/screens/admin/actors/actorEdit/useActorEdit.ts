@@ -40,7 +40,7 @@ export const useActorEdit = (setValue: UseFormSetValue<IActorEditInput>) => {
 	}, [isError])
 
 	const { mutateAsync } = useMutation({
-		mutationKey: ['Update genre'],
+		mutationKey: ['Update actor'],
 		mutationFn: (data: IActorEditInput) =>
 			ActorService.updateActor(queryId, data),
 		onError: () => toast.error('Error update actor'),
