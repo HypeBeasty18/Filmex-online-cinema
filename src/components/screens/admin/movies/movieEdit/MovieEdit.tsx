@@ -2,11 +2,13 @@
 
 import { FC } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import { stripHtml } from 'string-strip-html'
 
 import Layout from '@/components/layout/Layout'
 import SkeletonLoader from '@/components/ui/SkeletonLoader'
 import Button from '@/components/ui/form-elements/Button'
 import Field from '@/components/ui/form-elements/Field'
+import TextEditor from '@/components/ui/form-elements/TextEditor'
 import SlugField from '@/components/ui/form-elements/slugField/SlugField'
 import UploadField from '@/components/ui/form-elements/uploadField/UploadField'
 import Heading from '@/components/ui/heading/Heading'
@@ -15,10 +17,10 @@ import Select from '@/components/ui/select/Select'
 import generateSlug from '@/utils/string/generateSlug'
 
 import formStyles from '../../../../ui/form-elements/admin-form.module.scss'
-import { useAdminActors } from '../../genres/genreEdit/useAdminActors'
-import { useAdminGenre } from '../../genres/genreEdit/useAdminGenre'
 
 import { IMovieEditInput } from './movie-edit.interface'
+import { useAdminActors } from './useAdminActors'
+import { useAdminGenre } from './useAdminGenre'
 import { useMovieEdit } from './useMovieEdit'
 
 const ActorEdit: FC = () => {
@@ -93,7 +95,6 @@ const ActorEdit: FC = () => {
 							/>
 
 							<div style={{ width: '48%' }}>
-								{' '}
 								<Controller
 									control={control}
 									name='genres'
@@ -132,6 +133,33 @@ const ActorEdit: FC = () => {
 									}}
 								/>
 							</div>
+
+							<div className='mb-10 w-full'>
+								<Controller
+									control={control}
+									name='description'
+									defaultValue=''
+									render={({
+										field: { value, onChange },
+										fieldState: { error }
+									}) => (
+										<TextEditor
+											placeholder='Description'
+											onChange={onChange}
+											value={value}
+											error={error?.message?.toString()}
+										/>
+									)}
+									rules={{
+										validate: {
+											required: v =>
+												(v && stripHtml(v).result.length > 0) ||
+												'Description is required'
+										}
+									}}
+								/>
+							</div>
+
 							<div style={{ width: '48%' }}>
 								<Controller
 									control={control}
