@@ -1,13 +1,14 @@
+import { getContentType } from '@/api/api.helpers'
 import { Metadata, NextPage } from 'next'
 
 import Home from '@/components/screens/home/Home'
-import { IHome } from '@/components/screens/home/home.interface'
 import { ISlide } from '@/components/ui/slider/slider.interface'
 
+import { API_URL } from '@/config/api.config'
 import { siteName, titleMerge } from '@/config/seo.config'
 import { getMovieUrl } from '@/config/url.config'
 
-import { MovieService } from '@/services/movie.service'
+import { IMovie } from '@/shared/types/movie.types'
 
 import { getGenresLists } from '@/utils/movie/getGenresList'
 
@@ -29,9 +30,14 @@ export const metadata: Metadata = {
 	}
 }
 
-export const getData = async () => {
+const getData = async () => {
 	try {
-		const { data: movies } = await MovieService.getAll()
+		const response = await fetch(`${API_URL}/movies`, {
+			cache: 'force-cache',
+			headers: getContentType()
+		}).then(res => res.json())
+
+		const movies: IMovie[] = response
 
 		const slides: ISlide[] = movies.slice(0, 3).map(movie => ({
 			_id: movie._id,
@@ -47,9 +53,8 @@ export const getData = async () => {
 	}
 }
 
-const page: NextPage<IHome> = async () => {
+const page = async () => {
 	const slides = await getData()
-
 	return <Home slides={slides} />
 }
 
