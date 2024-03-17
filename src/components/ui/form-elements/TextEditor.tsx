@@ -45,7 +45,7 @@ const TextEditor: FC<ITextEditor> = ({
 	}
 
 	return (
-		<div className={cn(s.common, s.editorWrapper, 'animate-fade')}>
+		<div className={cn(s.common, s.editorWrapper)}>
 			<label>
 				<span>{placeholder}</span>
 				<div className={s.wrapper}>
@@ -55,8 +55,24 @@ const TextEditor: FC<ITextEditor> = ({
 						editorState={editorState}
 						onEditorStateChange={onEditorStateChange}
 						spellCheck
-						// toolbar={{}}
-					/>
+						toolbar={{
+							options: ['inline', 'blockType', 'list'],
+							inline: {
+								inDropdown: false,
+								className: undefined,
+								component: undefined,
+								dropdownClassName: undefined,
+								options: ['bold', 'italic', 'underline', 'strikethrough'],
+							},
+							blockType: {
+								inDropdown: false,
+								options: [],
+							},
+							list: {
+								inDrodown: false,
+								options: ['unordered', 'ordered'],
+							},
+						}}					/>
 				</div>
 				{error && <div className={s.error}>{error}</div>}
 			</label>
