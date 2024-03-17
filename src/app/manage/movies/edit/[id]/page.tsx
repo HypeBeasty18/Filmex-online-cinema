@@ -7,7 +7,7 @@ import MovieEdit from '@/components/screens/admin/movies/movieEdit/MovieEdit'
 import { titleMerge } from '@/config/seo.config'
 
 export const metadata: Metadata = {
-	title: titleMerge('Edit genre'),
+	title: titleMerge('Edit movie'),
 	robots: {
 		index: false,
 		follow: false,
