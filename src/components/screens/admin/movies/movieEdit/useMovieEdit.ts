@@ -6,7 +6,6 @@ import { toast } from 'react-toastify'
 
 import { getAdminUrl } from '@/config/url.config'
 
-import { ActorService } from '@/services/actor.service'
 import { MovieService } from '@/services/movie.service'
 
 import { getKeys } from '@/utils/object/getKeys'
@@ -40,7 +39,7 @@ export const useMovieEdit = (setValue: UseFormSetValue<IMovieEditInput>) => {
 	}, [isError])
 
 	const { mutateAsync } = useMutation({
-		mutationKey: ['Update genre'],
+		mutationKey: ['Update movie'],
 		mutationFn: (data: IMovieEditInput) =>
 			MovieService.updateMovie(queryId, data),
 		onError: () => toast.error('Error update movie'),

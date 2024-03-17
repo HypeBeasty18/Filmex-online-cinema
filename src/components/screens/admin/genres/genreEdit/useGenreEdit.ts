@@ -18,7 +18,7 @@ export const useGenreEdit = (setValue: UseFormSetValue<IGenreEditInput>) => {
 	const parts = pathname.split('/')
 	const queryId = parts[parts.length - 1] // чтобы при undefined не вызывало ошибки а просто выводило строку с 'undefined'
 
-
+	
 	const { push } = useRouter()
 
 	const { data, isError, isSuccess, isLoading } = useQuery({
