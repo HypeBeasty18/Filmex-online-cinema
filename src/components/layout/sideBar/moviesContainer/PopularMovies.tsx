@@ -21,7 +21,7 @@ const PopularMovies: FC = () => {
 	) : (
 		<MovieList
 			link='/trending'
-			movies={PopularMovies || []}
+			movies={PopularMovies?.slice(0,3) || []}
 			title='Popular Movies'
 		/>
 	)
