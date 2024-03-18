@@ -1,10 +1,15 @@
+import { getContentType } from '@/api/api.helpers'
 import { axiosClassic, instance } from '@/api/interceptors'
 
 import { IMovieEditInput } from '@/components/screens/admin/movies/movieEdit/movie-edit.interface'
+import { IGalleryItem } from '@/components/ui/gallery/gallery.interface'
+import { ISlide } from '@/components/ui/slider/slider.interface'
 
-import { getMoviesUrl } from '@/config/api.config'
+import { API_URL, getMoviesUrl } from '@/config/api.config'
 
 import { IMovie } from '@/shared/types/movie.types'
+
+import { transferToGalleryMovies, transferToSlides } from './home.helpers'
 
 export const MovieService = {
 	async getAll(searchTerm?: string) {
@@ -31,5 +36,42 @@ export const MovieService = {
 			getMoviesUrl(`/${_id}`)
 		)
 		return response.data
+	},
+
+	async fetchMovies() {
+		try {
+			const response = await fetch(`${API_URL}${getMoviesUrl('')}`, {
+				cache: 'force-cache',
+				headers: getContentType()
+			}).then(res => res.json())
+
+			const movies: IMovie[] = response
+
+			const slides: ISlide[] = transferToSlides(movies)
+
+			return slides
+		} catch (error) {
+			return []
+		}
+	},
+
+	async fetchTrendingMovies() {
+		try {
+			const response = await fetch(
+				`${API_URL}${getMoviesUrl('/most-popular')}`,
+				{
+					cache: 'force-cache',
+					headers: getContentType()
+				}
+			).then(res => res.json())
+
+			const movies: IMovie[] = response
+
+			const moviesGallery: IGalleryItem[] = transferToGalleryMovies(movies)
+
+			return moviesGallery
+		} catch (error) {
+			return []
+		}
 	}
 }
