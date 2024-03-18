@@ -1,0 +1,61 @@
+@import '../../../assets/styles/variables';
+
+.gallery {
+	@apply flex items-center overflow-hidden flex-nowrap py-3 gap-5 ;
+	-webkit-overflow-scrolling: touch;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
+	&:hover {
+		overflow-x: scroll;
+	}
+}
+
+.item {
+	@apply relative transition-transform flex items-end shadow-lg rounded-layout overflow-hidden;
+	flex: 0 0 auto;
+	width: 200px !important;
+	height: 300px !important;
+	scroll-snap-align: start;
+
+	&:hover {
+		@apply rounded-layout;
+		transform: translateY(-5px);
+	}
+
+	&.withText {
+    @include fade-bg-gradient(0deg);
+		&::before {
+			@apply rounded-layout;
+		}
+	}
+	.vertical {
+		@apply mr-4 last:mr-0 w-1/5 h-72;
+		max-width: 200px;
+	}
+
+	.horizontal {
+		@apply mb-8 h-44;
+		width: 31%;
+	}
+
+	img {
+		@apply image-like-bg;
+	}
+
+	.content {
+		@apply relative z-2 text-center m-3 w-full;
+
+		.title {
+			@apply font-semibold mb-1 text-white text-shadow;
+		}
+
+		.subTitle {
+			@apply text-gray-500 text-shadow;
+		}
+	}
+}
