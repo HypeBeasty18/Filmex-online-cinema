@@ -24,7 +24,7 @@ const SlideItem: FC<ISlideItem> = ({ slide, buttonTitle = 'Watch' }) => {
 					<Image
 						src={slide.bigPoster}
 						alt={slide.title}
-						layout='fill'
+						fill
 						className={s.image}
 						draggable={false}
 						priority
