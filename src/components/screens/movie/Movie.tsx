@@ -1,9 +1,11 @@
+
 import { FC } from 'react'
 
 import Layout from '@/components/layout/Layout'
 import Banner from '@/components/ui/banner/Banner'
 import Gallery from '@/components/ui/gallery/Gallery'
 import SubHeading from '@/components/ui/heading/SubHeading'
+import VideoPlayer from '@/components/ui/video-player/VideoPlayer'
 
 import { IMovieProps } from '@/shared/types/movie.types'
 
@@ -13,12 +15,18 @@ import s from './Movie.module.scss'
 import Content from './content/Content'
 
 const Movie: FC<IMovieProps> = ({ movie, similarMovies }) => {
+
+
+
+
 	return movie ? (
 		<Layout>
 			<Banner
 				image={movie.bigPoster}
 				Detail={() => <Content movie={movie} />}
 			/>
+
+			<VideoPlayer slug={movie.slug} videoSrc={movie.videoUrl} />
 
 			<div className='mt-12'>
 				<SubHeading title='Similar' />
