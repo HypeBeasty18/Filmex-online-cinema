@@ -1,3 +1,5 @@
+import { IGalleryItem } from '@/components/ui/gallery/gallery.interface'
+
 import { TypeMaterialIconName } from './icon.types'
 
 export interface IGenre {
@@ -34,4 +36,9 @@ export interface IMovie {
 	videoUrl: string
 	rating: number
 	slug: string
+}
+
+export interface IMovieProps {
+	movie: IMovie | undefined
+	similarMovies: IGalleryItem[]
 }
