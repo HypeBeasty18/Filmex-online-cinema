@@ -1,10 +1,9 @@
-import Discovery from '@/components/screens/discovery/Discovery'
-import { FC } from 'react'
+import { NextPage } from 'next'
 
-const page: FC = () => {
-  return (
-    <Discovery/>
-  )
+import Discovery from '@/components/screens/discovery/Discovery'
+
+const page: NextPage = () => {
+	return <Discovery />
 }
 
 export default page

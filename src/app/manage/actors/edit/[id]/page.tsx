@@ -1,6 +1,6 @@
 import AuthProvider from '@/providers/authProvider/AuthProvider'
 import { Metadata } from 'next'
-import { FC } from 'react'
+import { NextPage } from 'next'
 
 import ActorEdit from '@/components/screens/admin/actors/actorEdit/ActorEdit'
 
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 	}
 }
 
-const page: FC = () => {
+const page: NextPage = () => {
 	return (
 		<AuthProvider Component={{ isOnlyAdmin: true }}>
 			<ActorEdit />

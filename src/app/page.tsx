@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { NextPage } from 'next'
 
 import Home from '@/components/screens/home/Home'
 
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
 	}
 }
 
-const page = async () => {
+const page: NextPage = async () => {
 	const slides = await MovieService.fetchMovies()
 	const actors = await ActorService.fetchActors()
 	const trendingMovies = await MovieService.fetchTrendingMovies()

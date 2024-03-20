@@ -1,5 +1,5 @@
-import { Metadata } from 'next'
-import { FC, Suspense } from 'react'
+import { Metadata, NextPage } from 'next'
+import {  Suspense } from 'react'
 
 import Auth from '@/components/screens/auth/Auth'
 
@@ -14,10 +14,10 @@ export const metadata: Metadata = {
 	}
 }
 
-const page: FC = () => {
+const page: NextPage = () => {
 	return (
 		<Suspense fallback={<div>Loading...</div>}>
-			<Auth />{' '}
+			<Auth />
 		</Suspense>
 	)
 }

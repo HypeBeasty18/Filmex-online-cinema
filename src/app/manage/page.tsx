@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 
 import { titleMerge } from '@/config/seo.config'
 
-import { FC } from 'react'
+import { NextPage } from 'next'
 import Admin from '@/components/screens/admin/home/Admin'
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 	}
 }
 
-const page: FC = () => {
+const page: NextPage  = () => {
 	return (
 		<AuthProvider Component={{ isOnlyAdmin: true }}>
 			<Admin/>
