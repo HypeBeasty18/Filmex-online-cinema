@@ -38,7 +38,7 @@ export const transferToGalleryMovies = (movies: IMovie[]) => {
 	const moviesGallery: IGalleryItem[] = movies.slice(0, 10).map(movies => ({
 		name: movies.title,
 		posterPath: movies.poster,
-		link: getActorUrl(movies.slug),
+		link: getMovieUrl(movies.slug),
 	}))
 
   return moviesGallery

@@ -1,14 +1,13 @@
-import Layout from '@/components/layout/Layout'
-import Heading from '@/components/ui/heading/Heading'
 import { Metadata } from 'next'
-import { FC } from 'react'
+import { NextPage } from 'next'
 
+import NotFound from '@/components/screens/notFound/NotFound'
 
 export const metadata: Metadata = {
 	title: 'Page not found'
 }
-const Error404: FC = () => {
-	return <Layout><Heading title='404 - Page Not Found'/></Layout>
+const Error404: NextPage = () => {
+	return <NotFound />
 }
 
 export default Error404
