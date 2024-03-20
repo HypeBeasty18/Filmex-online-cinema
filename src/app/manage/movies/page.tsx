@@ -1,6 +1,6 @@
 import AuthProvider from '@/providers/authProvider/AuthProvider'
 import { Metadata } from 'next'
-import { FC } from 'react'
+import { NextPage } from 'next'
 
 
 import { titleMerge } from '@/config/seo.config'
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 	}
 }
 
-const page: FC = () => {
+const page: NextPage = () => {
 	return (
 		<AuthProvider Component={{ isOnlyAdmin: true }}>
 			<MovieList/>
