@@ -1,3 +1,4 @@
+'use client'
 
 import { FC } from 'react'
 
@@ -11,13 +12,12 @@ import { IMovieProps } from '@/shared/types/movie.types'
 
 import NotFound from '../notFound/NotFound'
 
-import s from './Movie.module.scss'
 import Content from './content/Content'
+import RateMovie from './rateMovie/RateMovie'
+import { useUpdateCountOpened } from './useUpdateCountOpened'
 
 const Movie: FC<IMovieProps> = ({ movie, similarMovies }) => {
-
-
-
+	useUpdateCountOpened(movie ? movie.slug : '')
 
 	return movie ? (
 		<Layout>
@@ -32,6 +32,8 @@ const Movie: FC<IMovieProps> = ({ movie, similarMovies }) => {
 				<SubHeading title='Similar' />
 				<Gallery items={similarMovies} />
 			</div>
+
+			<RateMovie id={movie._id} slug={movie.slug} />
 		</Layout>
 	) : (
 		<NotFound />
