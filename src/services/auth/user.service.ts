@@ -4,6 +4,7 @@ import { IProfileInput } from '@/components/screens/profile/profile.interface'
 
 import { getUsersUrl } from '@/config/api.config'
 
+import { IMovie } from '@/shared/types/movie.types'
 import { IUser } from '@/shared/types/user.types'
 
 export const userService = {
@@ -27,5 +28,13 @@ export const userService = {
 	},
 	async update(_id: string, data: IProfileInput) {
 		return await instance.put<string>(getUsersUrl(`/${_id}`), data)
+	},
+	async getFavourites() {
+		return await instance.get<IMovie[]>(getUsersUrl('/profile/favorites'))
+	},
+	async toggleFavourite(movieId: string) {
+		return await instance.post(getUsersUrl('/profile/favorites'), {
+			movieId
+		})
 	}
 }
