@@ -1,4 +1,5 @@
 'use client'
+
 import { useQuery } from '@tanstack/react-query'
 import { FC } from 'react'
 
@@ -21,7 +22,8 @@ const PopularMovies: FC = () => {
 	) : (
 		<MovieList
 			link='/trending'
-			movies={PopularMovies?.slice(0,3) || []}
+			many={PopularMovies && PopularMovies?.length > 3}
+			movies={PopularMovies?.slice(0, 3) || []}
 			title='Popular Movies'
 		/>
 	)
