@@ -11,7 +11,7 @@ export const useAuthRedirect = () => {
 	const { push } = useRouter()
 	const searchParams = useSearchParams()
 
-	const redirect = searchParams ? searchParams.get('') || '/' : '/'
+	const redirect = searchParams ? searchParams.get('redirect') || '/' : '/'
 
 	useEffect(() => {
 		if (user) {
