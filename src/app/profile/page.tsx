@@ -2,6 +2,8 @@ import AuthProvider from '@/providers/authProvider/AuthProvider'
 import { Metadata } from 'next'
 import { NextPage } from 'next'
 
+import Profile from '@/components/screens/profile/Profile'
+
 import { titleMerge } from '@/config/seo.config'
 
 export const metadata: Metadata = {
@@ -13,10 +15,10 @@ export const metadata: Metadata = {
 	}
 }
 
-const page: NextPage  = () => {
+const page: NextPage = () => {
 	return (
 		<AuthProvider Component={{ isOnlyUser: true }}>
-			<div className='text-white'>Admin panel</div>
+			<Profile />
 		</AuthProvider>
 	)
 }
