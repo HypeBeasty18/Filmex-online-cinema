@@ -784,6 +784,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-star-rating-component@npm:^1.4.4":
+  version: 1.4.4
+  resolution: "@types/react-star-rating-component@npm:1.4.4"
+  dependencies:
+    "@types/react": "npm:*"
+  checksum: 10c0/7e0d1a065fefeba0077ba9f2cea8b35deb907336ec13c86914d0a99e5f75d9d2bf5de2b8d28c63d002101baaa037a52f4c2c2d641e80361babf881cff5f7824c
+  languageName: node
+  linkType: hard
+
 "@types/react-transition-group@npm:^4, @types/react-transition-group@npm:^4.4.0":
   version: 4.4.10
   resolution: "@types/react-transition-group@npm:4.4.10"
@@ -1419,7 +1428,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.2.6":
+"classnames@npm:^2.2.5, classnames@npm:^2.2.6":
   version: 2.5.1
   resolution: "classnames@npm:2.5.1"
   checksum: 10c0/afff4f77e62cea2d79c39962980bf316bacb0d7c49e13a21adaadb9221e1c6b9d3cdb829d8bb1b23c406f4e740507f37e1dcf506f7e3b7113d17c5bab787aa69
@@ -2396,6 +2405,7 @@ __metadata:
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
     "@types/react-draft-wysiwyg": "npm:^1.13.8"
+    "@types/react-star-rating-component": "npm:^1.4.4"
     "@types/react-transition-group": "npm:^4"
     autoprefixer: "npm:^10.0.1"
     axios: "npm:^1.6.7"
@@ -2418,6 +2428,7 @@ __metadata:
     react-loading-skeleton: "npm:^3.4.0"
     react-redux: "npm:^9.1.0"
     react-select: "npm:^5.8.0"
+    react-star-rating-component: "npm:^1.4.1"
     react-toastify: "npm:^10.0.4"
     react-transition-group: "npm:^4.4.5"
     sass: "npm:^1.71.1"
@@ -4247,7 +4258,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.0, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.6.0, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -4428,6 +4439,18 @@ __metadata:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
   checksum: 10c0/b4b98aaf117ee5cc4642871b7bd51fd0e2697988d0b880f30b21e933ca90258959147117d8aada36713b622e0e4cb06bd18ec02069f3f108896e0d31e69e3c16
+  languageName: node
+  linkType: hard
+
+"react-star-rating-component@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "react-star-rating-component@npm:1.4.1"
+  dependencies:
+    classnames: "npm:^2.2.5"
+    prop-types: "npm:^15.6.1"
+  peerDependencies:
+    react: ^16.2.0
+  checksum: 10c0/972264ba2ffbe50e35dbe3a13b1b7635d4af84e5c0a6c0b8f33c8e8288577efac8706704a3549dcf792d3f5c250f0aca5a1076f029c417c193ae6a94db8a1d86
   languageName: node
   linkType: hard
 
