@@ -6,11 +6,11 @@ import { FC } from 'react'
 import s from './Gallery.module.scss'
 import { IGalleryItemProps } from './gallery.interface'
 
-const GalleryItem: FC<IGalleryItemProps> = ({ item, variant }) => {
+const GalleryItem: FC<IGalleryItemProps> = ({ item, variant, className }) => {
 	return (
 		<Link href={item.link}>
 			<div
-				className={cn(s.item, {
+				className={cn(s.item, className, {
 					[s.withText]: item.content,
 					[s.horizontal]: variant === 'horizontal',
 					[s.vertical]: variant === 'vertical'
@@ -22,9 +22,8 @@ const GalleryItem: FC<IGalleryItemProps> = ({ item, variant }) => {
 					draggable={false}
 					fill
 					priority
-          className={s.image}
-					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-
+					className={s.image}
+					sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
 				/>
 				{item.content ? (
 					<div className={s.content}>
