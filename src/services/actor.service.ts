@@ -1,11 +1,10 @@
 import { getContentType } from '@/api/api.helpers'
-import { instance } from '@/api/interceptors'
+import { axiosClassic, instance } from '@/api/interceptors'
 
 import { IActorEditInput } from '@/components/screens/admin/actors/actorEdit/actor-edit.interface'
 import { IGalleryItem } from '@/components/ui/gallery/gallery.interface'
 
 import { API_URL, getActorsUrl } from '@/config/api.config'
-import { getActorUrl } from '@/config/url.config'
 
 import { IActor } from '@/shared/types/movie.types'
 
@@ -48,5 +47,8 @@ export const ActorService = {
 		} catch (error) {
 			return []
 		}
+	},
+	async getBySlug(slug: string) {
+		return await axiosClassic.get<IActor>(getActorsUrl(`/by-slug/${slug}`))
 	}
 }

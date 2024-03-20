@@ -1,8 +1,9 @@
+import { getContentType } from '@/api/api.helpers'
 import { axiosClassic, instance } from '@/api/interceptors'
 
 import { IGenreEditInput } from '@/components/screens/admin/genres/genreEdit/genre-edit.interface'
 
-import { getGenresUrl } from '@/config/api.config'
+import { API_URL, getGenresUrl } from '@/config/api.config'
 import { getGenreUrl } from '@/config/url.config'
 
 import { IGenre } from '@/shared/types/movie.types'
@@ -33,4 +34,8 @@ export const GenreService = {
 	async createGenre() {
 		return instance.post<string>(getGenresUrl('/'))
 	},
+
+	async getBySlug(slug: string) {
+		return await axiosClassic.get<IGenre>(getGenresUrl(`/by-slug/${slug}`))
+	}
 }

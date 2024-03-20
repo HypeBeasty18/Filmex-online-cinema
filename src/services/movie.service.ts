@@ -73,5 +73,45 @@ export const MovieService = {
 		} catch (error) {
 			return []
 		}
+	},
+
+	async fetchAllMovies() {
+		try {
+			const response = await fetch(`${API_URL}${getMoviesUrl('')}`, {
+				cache: 'force-cache',
+				headers: getContentType()
+			}).then(res => res.json())
+
+			const movies: IMovie[] = response
+
+			return movies
+		} catch (error) {
+			return []
+		}
+	},
+
+	async fetchTrendingNow() {
+		try {
+			const response = await fetch(
+				`${API_URL}${getMoviesUrl('/most-popular')}`,
+				{
+					cache: 'force-cache',
+					headers: getContentType()
+				}
+			).then(res => res.json())
+
+			const movies: IMovie[] = response
+
+			return movies
+		} catch (error) {
+			return []
+		}
+	},
+
+	async getByGenres(genreIds: string[]) {
+		return axiosClassic.post<IMovie[]>(getMoviesUrl('/by-genres'), { genreIds })
+	},
+	async getByActor(actorId: string) {
+		return axiosClassic.get<IMovie[]>(getMoviesUrl(`/by-actor/${actorId}`))
 	}
 }
