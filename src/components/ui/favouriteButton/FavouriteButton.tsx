@@ -10,7 +10,6 @@ import { useFavourites } from '@/components/screens/favourites/useFavourites'
 import { userService } from '@/services/auth/user.service'
 
 import s from './FavouriteButton.module.scss'
-import HeartImage from './heart-animation.png'
 
 const FavouriteButton: FC<{ movieId: string }> = ({ movieId }) => {
 	const [isSmashed, setIsSmashed] = useState<boolean>(false)
@@ -47,7 +46,7 @@ const FavouriteButton: FC<{ movieId: string }> = ({ movieId }) => {
 				[s.animate]: isSmashed
 			})}
 			onClick={handleClick}
-			style={{ backgroundImage: `url(${HeartImage.src})` }}
+			style={{ backgroundImage: 'url("/heart-animation.png")' }}
 		/>
 	)
 }

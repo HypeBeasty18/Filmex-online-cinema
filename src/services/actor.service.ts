@@ -36,7 +36,8 @@ export const ActorService = {
 		try {
 			const response = await fetch(`${API_URL}${getActorsUrl('')}`, {
 				cache: 'force-cache',
-				headers: getContentType()
+				headers: getContentType(),
+				next: { revalidate: 3600 }
 			}).then(res => res.json())
 
 			const actors: IActor[] = response

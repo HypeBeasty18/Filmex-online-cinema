@@ -42,7 +42,8 @@ export const MovieService = {
 		try {
 			const response = await fetch(`${API_URL}${getMoviesUrl('')}`, {
 				cache: 'force-cache',
-				headers: getContentType()
+				headers: getContentType(),
+				next: { revalidate: 3600 }
 			}).then(res => res.json())
 
 			const movies: IMovie[] = response
@@ -61,7 +62,8 @@ export const MovieService = {
 				`${API_URL}${getMoviesUrl('/most-popular')}`,
 				{
 					cache: 'force-cache',
-					headers: getContentType()
+					headers: getContentType(),
+					next: { revalidate: 3600 }
 				}
 			).then(res => res.json())
 
@@ -79,7 +81,8 @@ export const MovieService = {
 		try {
 			const response = await fetch(`${API_URL}${getMoviesUrl('')}`, {
 				cache: 'force-cache',
-				headers: getContentType()
+				headers: getContentType(),
+				next: { revalidate: 3600 }
 			}).then(res => res.json())
 
 			const movies: IMovie[] = response
@@ -96,7 +99,8 @@ export const MovieService = {
 				`${API_URL}${getMoviesUrl('/most-popular')}`,
 				{
 					cache: 'force-cache',
-					headers: getContentType()
+					headers: getContentType(),
+					next: { revalidate: 3600 }
 				}
 			).then(res => res.json())
 

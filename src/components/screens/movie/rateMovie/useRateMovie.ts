@@ -2,6 +2,8 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
+import { useAuth } from '@/hooks/useAuth'
+
 import { RatingService } from '@/services/rating.service'
 
 export const useRateMovie = (movieId: string) => {
@@ -9,10 +11,12 @@ export const useRateMovie = (movieId: string) => {
 
 	const [isSended, setIsSended] = useState<boolean>(false)
 
+	const { user } = useAuth()
+
 	const { isSuccess, isError, refetch, data } = useQuery({
 		queryKey: ['Your movie rating', movieId],
 		queryFn: () => RatingService.getByUserMovie(movieId),
-		enabled: !!movieId
+		enabled: !!movieId && !!user
 	})
 
 	useEffect(() => {
